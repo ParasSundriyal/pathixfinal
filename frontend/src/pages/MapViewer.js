@@ -131,7 +131,7 @@ export default function MapViewer() {
       setLoading(true);
       setError('');
       try {
-        const res = await fetch(`http://localhost:5000/api/maps/${id}`);
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/maps/${id}`);
         if (res.ok) {
           const data = await res.json();
           setMap(data);

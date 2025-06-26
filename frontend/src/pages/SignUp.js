@@ -64,7 +64,7 @@ export default function SignUp() {
       return;
     }
     try {
-      const res = await fetch('http://localhost:5000/api/auth/signup', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
@@ -88,7 +88,7 @@ export default function SignUp() {
     setMessage('');
     setGoogleCredential(credentialResponse.credential);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/google', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/google`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: credentialResponse.credential }),
@@ -117,7 +117,7 @@ export default function SignUp() {
     setError('');
     setMessage('');
     try {
-      const res = await fetch('http://localhost:5000/api/auth/google', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/google`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: googleCredential, phone, organization }),

@@ -639,7 +639,7 @@ export default function Dashboard() {
       setMapError('');
       try {
         const token = sessionStorage.getItem('token');
-        const res = await fetch('http://localhost:5000/api/maps', {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/maps`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.ok) {
@@ -670,7 +670,7 @@ export default function Dashboard() {
         // Add more state here if needed
       };
       const token = sessionStorage.getItem('token');
-      const res = await fetch('http://localhost:5000/api/maps', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/maps`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -683,7 +683,7 @@ export default function Dashboard() {
         setMapMessage('Map saved!');
         setShowMapNameModal(false);
         // Refresh maps list
-        const mapsRes = await fetch('http://localhost:5000/api/maps', {
+        const mapsRes = await fetch(`${process.env.REACT_APP_API_URL}/api/maps`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (mapsRes.ok) setMaps(await mapsRes.json());
@@ -708,7 +708,7 @@ export default function Dashboard() {
     setMapError('');
     try {
       const token = sessionStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/maps/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/maps/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.ok) {
@@ -736,7 +736,7 @@ export default function Dashboard() {
     setMapError('');
     try {
       const token = sessionStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/maps/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/maps/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
